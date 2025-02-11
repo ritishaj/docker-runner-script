@@ -1,0 +1,19 @@
+
+name: Run a bash command 
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'Dockerfile'
+      - .github/workflows/docker-publish.yml # or whatever you named the file
+      - 'conda-linux-64.lock'
+
+jobs:
+  run-bash-command:
+    name: Run a bash command using github actions 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
